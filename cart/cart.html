@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type = "text/javascript" src = "../vue.min.js"></script>
+    <link href="./cart.css" rel="stylesheet">
+    <title>cart</title>
+</head>
+<div class="header">
+    <a href="#default" class="logo">CompanyLogo</a>
+    <div class="header-left">
+    <a class="hm" href="../main.html">خانه</a>
+    <a href="#contact">محصولات</a>
+    <a href="#about">درباره ما</a>
+    <a href="./profile/profile.html">پروفایل</a>
+    </div>
+ </div>
+<body>
+    <div   id = "databinding" class="categories">
+        <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+
+    </div>
+    <div v-for = "a in b" class="container"> 
+        <div class="wrapper">
+       
+       <div  class="banner-image"style=" background-image: url('../assets/images/pic1.jpg') "> </div>
+       </div>
+       
+       <div class="button-wrapper"> 
+       <button v-on:click = "showdata" class="btn outline" >DETAILS</button>
+       <div class="numberOfProduct">
+        <button @click="decrease()"  class="btn fill">-</button>
+        <!-- <div class="numberOfProductText">{{numberOfProduct}}</div> -->
+          <button @click="increase()" class="btn fill">+</button>
+       </div>
+       
+       </div>
+     </div>
+ </div>
+</body>
+<script type = "text/javascript">
+    var vm = new Vue({
+          el: '#databinding',
+          data: {
+             b :3 ,
+             numberOfProducts:0,
+             styleobj: {
+             }
+          },
+          methods : {
+             showdata : function() {
+                this.b += 1;
+             },
+             increase : function(){
+                numberOfProducts++;
+             },
+             decrease : function(){
+                if(numberOfProducts !=0){
+                    numberOfProducts--;
+                }
+            }
+          },
+       });
+    </script>
+</html>

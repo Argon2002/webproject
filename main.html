@@ -1,0 +1,113 @@
+<html>
+    <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title> Company </title>
+       <script type = "text/javascript" src = "vue.min.js"></script>
+       <link href="home_styles.css" rel="stylesheet">
+       </head>
+ <body>
+    <div class="header">
+       <a href="#default" class="logo">CompanyLogo</a>
+       <div class="header-left">
+       <a class="hm" href="#home">خانه</a>
+       <a href="./cart/cart.html">سبد خرید</a>
+       <a href="./about_us/about_us.html">درباره ما</a>
+       <a href="./profile/profile.html">پروفایل</a>
+       </div>
+    </div>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="https://i.pinimg.com/564x/0a/30/55/0a3055e7ae437712bf65907adc33982a.jpg" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="https://i.pinimg.com/564x/8c/00/91/8c00914f41d0d7fec49c3a9431c5b417.jpg" style="width:100%">
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="https://i.pinimg.com/564x/f9/07/67/f90767a3d8043dec44da258502680d4a.jpg" style="width:100%">
+          <div class="text">Caption Three</div>
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+ <div   id = "databinding" class="categories">
+        <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+
+    </div>
+    <div v-for = "a in b" class="container"> 
+        <div class="wrapper">
+       
+       <div  class="banner-image"style=" background-image: url('assets/images/pic1.jpg') "> </div>
+       </div>
+       
+       <div class="button-wrapper"> 
+       <button v-on:click = "showdata" class="btn outline" >DETAILS</button>
+          <button class="btn fill">BUY NOW</button>
+       </div>
+     </div>
+ </div>
+ <script type = "text/javascript">
+ var vm = new Vue({
+       el: '#databinding',
+       data: {
+          b :12 ,
+          styleobj: {
+          }
+       },
+       methods : {
+          showdata : function() {
+             this.b += 1;
+          }
+       },
+    });
+ </script>
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
+ </body>
+ </html>
